@@ -9,12 +9,12 @@ namespace BankAccountLibrary
 {
     public class BankAccount
     {
-        private string _customerName;
+        private string _accountId;
         private double _balance;
 
-        public BankAccount(string customerName, double balance)
+        public BankAccount(string accountId, double balance)
         {
-            _customerName = customerName;
+            _accountId = accountId;
             _balance = balance;
         }
 

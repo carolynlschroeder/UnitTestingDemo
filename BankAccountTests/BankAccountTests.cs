@@ -5,13 +5,13 @@ using BankAccountLibrary;
 namespace BankAccountTests
 {
     [TestClass]
-    public class UnitTests
+    public class BankAccountTests
     { 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Debit_IfAmountGreaterThanBalance_ReturnsArgumentOutOfRangeException()
         {
-            var bankAccount = new BankAccount("CustomerName", 1050);
+            var bankAccount = new BankAccount("Acct001", 1050);
             bankAccount.Debit(1200);
         }
 
@@ -19,22 +19,22 @@ namespace BankAccountTests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Debit_IfAmountLessThanZero_ReturnsArgumentOutOfRangeException()
         {
-            var bankAccount = new BankAccount("CustomerName", 1050);
+            var bankAccount = new BankAccount("Acct001", 1050);
             bankAccount.Debit(-100);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void Credit_IfAmountLessThanZero_ReturnsArgumentException()
+        public void Credit_IfAmountLessThanZero_ReturnsArgumentOutOfRangeException()
         {
-            var bankAccount = new BankAccount("CustomerName", 1050);
+            var bankAccount = new BankAccount("Acct001", 1050);
             bankAccount.Credit(-100);
         }
 
         [TestMethod]
         public void Debit_WithValidAmount_UpdatesBalance()
         {
-            var bankAccount = new BankAccount("CustomerName", 1050);
+            var bankAccount = new BankAccount("Acct001", 1050);
             bankAccount.Debit(900);
             Assert.AreEqual(bankAccount.Balance, 150);
         }
@@ -42,7 +42,7 @@ namespace BankAccountTests
         [TestMethod]
         public void Credit_WithValidAmount_UpdatesBalance()
         {
-            var bankAccount = new BankAccount("CustomerName", 1050);
+            var bankAccount = new BankAccount("Acct001", 1050);
             bankAccount.Credit(500);
             Assert.AreEqual(bankAccount.Balance, 1550);
         }
